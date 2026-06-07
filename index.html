@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCA Premium Live Test</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: #eef2f5; 
+            color: #333;
+            padding: 20px; 
+            margin: 0;
+        }
+        .container { 
+            background: white; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 30px; 
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1); 
+            border-top: 8px solid #1a5276; 
+            border-radius: 8px;
+        }
+        .header { text-align: center; border-bottom: 2px solid #1a5276; padding-bottom: 15px; margin-bottom: 25px; }
+        .header h1 { margin: 0; color: #1a5276; font-size: 26px; }
+        .header h2 { margin: 5px 0 0; color: #555; font-size: 16px; }
+        .instructions { background: #fef9e7; padding: 15px; border-left: 5px solid #f39c12; font-size: 14px; margin-bottom: 25px; border-radius: 4px; }
+        .section-title { background: #1a5276; color: white; padding: 10px 15px; font-size: 16px; font-weight: bold; margin: 30px 0 15px 0; border-radius: 4px; }
+        .question-block { margin-bottom: 20px; padding: 15px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; }
+        .question-text { font-weight: 600; color: #1e293b; margin-bottom: 12px; font-size: 15px; }
+        .options { display: flex; flex-direction: column; gap: 8px; }
+        .option-label { display: flex; align-items: center; padding: 8px 12px; background: white; border: 1px solid #cbd5e1; border-radius: 4px; cursor: pointer; transition: 0.2s; font-size: 14px; }
+        .option-label:hover { background: #f1f5f9; }
+        .option-label input { margin-right: 10px; cursor: pointer; }
+        
+        /* Result Highlights */
+        .correct-answer { background-color: #d4edda !important; border-color: #28a745 !important; color: #155724 !important; font-weight: bold; }
+        .wrong-answer { background-color: #f8d7da !important; border-color: #dc3545 !important; color: #721c24 !important; text-decoration: line-through; }
+        
+        .submit-btn { display: block; width: 100%; padding: 15px; background: #1a5276; color: white; border: none; font-size: 18px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 30px; transition: 0.3s; }
+        .submit-btn:hover { background: #154360; }
+        
+        #result-box { display: none; background: #d4edda; color: #155724; border: 2px solid #28a745; padding: 20px; margin-top: 30px; text-align: center; border-radius: 8px; font-size: 22px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>12th - LIVE EXAM PORTAL</h1>
+        <h3>india through a traveler’s eyeत Online Test (50 Questions)</h3>
+<h2 style="font-size:10px; color:#888; font-weight:normal;">
+    यह test sangam (in id-@sangam__zero) द्वारा बनाया गया है। यदि आप भी अपने लिए इसी प्रकार का online test बनवाना चाहते हैं, तो 9241967602 पर Message कर सकते हैं।</h2>
+    </div>
+
+    <div class="instructions">
+        <strong>निर्देश:</strong> सभी प्रश्नों के उत्तर दें। प्रत्येक प्रश्न के 4 विकल्प हैं। परीक्षण पूरा करने के बाद <strong>"Submit Test"</strong> पर क्लिक करें ताकि आप अपना स्कोर और सही उत्तर देख सकें।
+    </div>
+
+    <form id="quizForm">
+        
+        <!-- SECTION 01 -->
+        <div class="section-title">SECTION 01. </div>
+        
+        <script>
+            // All 50 Questions Data (Generated Dynamically for clean code)
+           const questions = [
+                // SECTION - India Through a Traveller's Eyes (Based on Pearl S. Buck)
+                { q: "1. The young Indian intellectuals were disappointed with the –", opt: ["English", "American", "Chinese", "Japanese"], ans: 0 },
+                { q: "2. Indians, under the British rule, had a life-span of just –", opt: ["thirty years", "thirty-five years", "forty years", "twenty-seven years"], ans: 3 },
+                { q: "3. For all the ills of India, the writer blames-", opt: ["Indians", "the English rule", "both", "None of these"], ans: 1 },
+                { q: "4. The writer visiting an Indian family felt –", opt: ["happiness", "sorrow", "disgust", "None of these"], ans: 0 },
+                { q: "5. The book 'Come, My Beloved' has the-", opt: ["English background", "Chinese background", "American background", "Indian background"], ans: 3 },
+                { q: "6. She taught in-", opt: ["an Indian University", "an American University", "a Chinese University", "None of these"], ans: 2 },
+                { q: "7. She won the Nobel Prize in-", opt: ["1928", "1938", "1948", "1958"], ans: 1 },
+                { q: "8. Buck's family doctor was the", opt: ["English", "Indian", "American", "Chinese"], ans: 1 },
+                { q: "9. Gandhi's hold was upon", opt: ["intellectuals", "peasants", "both", "None of these"], ans: 2 },
+                { q: "10. The Mongols from Europe invaded.", opt: ["Bengal", "Delhi", "Punjab", "Kashmir"], ans: 3 },
+                { q: "11. The first woman President of the General Assembly of the United States was the –", opt: ["Japanese", "American", "Chinese", "Indian"], ans: 3 },
+                { q: "12. Pearl S. Buck was born in-", opt: ["1882", "1862", "1892", "1872"], ans: 2 },
+                { q: "13. By birth she was –", opt: ["American", "Chinese", "Japanese", "Indian"], ans: 0 },
+                { q: "14. She was reared in –", opt: ["Germany", "England", "China", "India"], ans: 2 },
+                { q: "15. She was reared by her-", opt: ["grand-mother", "uncle", "aunt", "missionary parents"], ans: 3 },
+                { q: "16. 'India Through a Traveller's Eyes' has been written by-", opt: ["Shiga Naoya", "Pearl S. Buck", "Anton Chekhov", "Germaine Greer"], ans: 1 },
+                { q: "17. Pearl S. Buck has written the lesson –", opt: ["A Child is Born", "The Artist", "India Through a Traveller's Eyes", "I Have a Dream"], ans: 2 },
+                { q: "18. 'India Through a Traveller's Eyes' is an inspiring–", opt: ["drama", "story", "novel", "essay"], ans: 3 },
+                { q: "19. Pearl S. Buck is an ……… writer.", opt: ["American", "Indian", "Iranian", "African"], ans: 0 },
+                { q: "20. ………. has praised Indian people and their life.", opt: ["Shiga Naoya", "H.E. Bates", "Pearl S. Buck", "Bertrand Russell"], ans: 2 },
+                { q: "21. Our food was served on fresh green ………….. leaves instead plates.", opt: ["peepal", "banana", "mango", "banyan"], ans: 1 },
+                { q: "22. From boyhood the Indian ……… are taught that the right hand is for clean services.", opt: ["young", "boys", "people", "children"], ans: 3 },
+                { q: "23. Indian peasants are poorer than their ………….. counterparts.", opt: ["Pakistani", "Chinese", "Sri Lankan", "Russian"], ans: 1 },
+                { q: "24. I was called to kill a dangerous —", opt: ["dog", "tiger", "snake", "cat"], ans: 0 },
+                { q: "25. …………. advised the Indians not to blame the Britishers for everything.", opt: ["Mahatma Gandhi", "Shiga Naoya", "Pearl S. Buck", "H.E. Bates"], ans: 2 },
+                { q: "26. ……….. Visited India to see and listen to two groups of people.", opt: ["Germaine Greer", "Bertrand Russell", "Anton Chekhov", "Pearl S. Buck"], ans: 3 },
+                { q: "27. Religion is ever present in ………. life.", opt: ["American", "Chinese", "Indian", "Russian"], ans: 2 },
+                { q: "28. The land between Bombay and ………. is famished.", opt: ["Kolkata", "Madras", "Delhi", "Bangalore"], ans: 0 },
+                { q: "29. The people of ………. must be reckoned as belonging to the Caucasian race.", opt: ["America", "China", "India", "Canada"], ans: 2 }
+            ];
+            // Render Questions
+            questions.forEach((item, index) => {
+                if(index === 10) document.write('<div class="section-title">SECTION 02. </div>');
+                if(index === 20) document.write('<div class="section-title">SECTION 03. </div>');
+                if(index === 30) document.write('<div class="section-title">SECTION 04. </div>');
+                if(index === 40) document.write('<div class="section-title">SECTION 05. </div>');
+
+                let optionsHTML = '';
+                item.opt.forEach((option, i) => {
+                    optionsHTML += `
+                        <label class="option-label" id="label-q${index}-opt${i}">
+                            <input type="radio" name="q${index}" value="${i}">
+                            ${String.fromCharCode(97 + i)}) ${option}
+                        </label>`;
+                });
+
+                document.write(`
+                    <div class="question-block" id="qBlock${index}">
+                        <div class="question-text">${item.q}</div>
+                        <div class="options">${optionsHTML}</div>
+                    </div>
+                `);
+            });
+        </script>
+
+        <button type="button" class="submit-btn" onclick="calculateScore()">Submit Test & Check Result</button>
+    </form>
+
+    <div id="result-box"></div>
+
+</div>
+
+<script>
+    function calculateScore() {
+        let score = 0;
+        let total = questions.length;
+
+        questions.forEach((item, index) => {
+            // Get selected option
+            let selected = document.querySelector(`input[name="q${index}"]:checked`);
+            let correctValue = item.ans;
+            
+            // Highlight correct answer permanently
+            let correctLabel = document.getElementById(`label-q${index}-opt${correctValue}`);
+            correctLabel.classList.add("correct-answer");
+
+            if (selected) {
+                let selectedValue = parseInt(selected.value);
+                if (selectedValue === correctValue) {
+                    score++;
+                } else {
+                    // Highlight wrong answer if user selected it
+                    let wrongLabel = document.getElementById(`label-q${index}-opt${selectedValue}`);
+                    wrongLabel.classList.add("wrong-answer");
+                }
+            }
+        });
+
+        // Show Score
+        let resultBox = document.getElementById('result-box');
+        resultBox.style.display = "block";
+        
+        let percentage = (score / total) * 100;
+        let message = "";
+        
+        if(percentage >= 80) message = "उत्कृष्ट प्रदर्शन! 🌟";
+        else if(percentage >= 50) message = "अच्छा प्रयास, थोड़ी और मेहनत करें! 👍";
+        else message = "आपको और अभ्यास की आवश्यकता है! 📚";
+
+        resultBox.innerHTML = `आपका स्कोर: ${score} / ${total} <br><span style="font-size:18px; color:#333;">${message}</span>`;
+        
+        // Scroll to result
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
